@@ -1,0 +1,38 @@
+.comment {
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 15px;
+  padding-bottom: 5px;
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 10px;
+
+  &Head {
+    display: flex;
+  }
+
+  &Info {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h3 {
+      font-size: 15px;
+    }
+
+    p {
+      font-size: 13px;
+      color: gray;
+    }
+  }
+
+  &Body {
+    margin-top: 15px;
+  }
+
+  &Icons {
+    margin-top: 10px;
+    display: flex;
+  }
+}

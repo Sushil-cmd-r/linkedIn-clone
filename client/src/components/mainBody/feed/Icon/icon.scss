@@ -1,0 +1,21 @@
+.icon {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  border-radius: 5px;
+  justify-content: center;
+  margin: 0 5px;
+
+  &:hover {
+    background-color: var(--borderColor);
+    cursor: pointer;
+  }
+
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+    margin-left: 10px;
+  }
+}

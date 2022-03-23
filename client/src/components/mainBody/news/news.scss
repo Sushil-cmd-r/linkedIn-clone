@@ -1,0 +1,40 @@
+.news {
+  flex: 0.3;
+  background-color: white;
+  height: max-content;
+  border-radius: var(--borderRadius);
+
+  h4 {
+    padding: 15px 15px;
+  }
+  ul {
+    width: 100%;
+
+    li {
+      padding: 5px 15px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--borderColor);
+      }
+
+      span {
+        margin-left: 15px;
+      }
+
+      .newDate {
+        color: "gray";
+        font-size: 12px;
+        font-weight: 200;
+        margin-top: 3px;
+        color: gray;
+      }
+      &:last-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

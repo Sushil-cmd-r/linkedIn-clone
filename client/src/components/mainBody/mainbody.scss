@@ -1,0 +1,22 @@
+.mainbody {
+  width: 100vw;
+  height: calc(100% - 52px);
+  margin-top: 52px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0 var(--padding);
+  padding-top: 2rem;
+  position: relative;
+  background-color: var(--background);
+}
+
+.mainbody.active::after {
+  height: 100%;
+  width: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  background: transparent
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
