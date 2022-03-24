@@ -53,7 +53,7 @@ const Feed = () => {
       </div>
 
       <div className="comments">
-        {comments.length <= 0 ? (
+        {comments.length <= 0 && !err ? (
           <p style={{ marginTop: "15px" }}>Loading Comments</p>
         ) : err ? (
           <p style={{ marginTop: "15px" }}>{err}</p>
