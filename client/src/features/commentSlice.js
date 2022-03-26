@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import * as api from "../api/index";
+import * as api from "../api";
 
 const initialState = {
   comments: [],
@@ -22,7 +22,6 @@ const getComments = createAsyncThunk("FETCH_ALL", async () => {
 });
 
 const createComment = createAsyncThunk("CREATE", async (newComment) => {
-  console.log(newComment);
   const { data } = await api.createComment(newComment);
   return data;
 });

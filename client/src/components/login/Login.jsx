@@ -1,9 +1,11 @@
 import "./login.scss";
 import React, { useRef, useState } from "react";
 import { linkedinImage } from "../../assets/images";
+import { useDispatch } from "react-redux";
+import { login, signup } from "../../features/userSlice";
 
-const Login = () => {
-  const [isSignup, setIsSignup] = useState(true);
+const Login = ({ error }) => {
+  const [isSignup, setIsSignup] = useState(false);
   const [newUser, setNewUser] = useState({
     email: "",
     passward: "",
@@ -12,9 +14,16 @@ const Login = () => {
   });
   const errRef = useRef(null);
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newUser);
+    console.log("button clicked");
+    if (!isSignup) {
+      dispatch(login(newUser));
+      return;
+    }
+    dispatch(signup(newUser));
   };
 
   return (
@@ -35,9 +44,9 @@ const Login = () => {
                   setNewUser({ ...newUser, name: e.target.value })
                 }
               />
-              {/* <p className="error" ref={errRef}>
+              <p className="error" ref={errRef}>
                 {error?.name ? error.name : ""}
-              </p> */}
+              </p>
               <label htmlFor="lastName">LastName</label>
               <input
                 type="text"
@@ -48,9 +57,9 @@ const Login = () => {
                   setNewUser({ ...newUser, lastName: e.target.value })
                 }
               />
-              {/* <p className="error" ref={errRef}>
+              <p className="error" ref={errRef}>
                 {error?.lastName ? error.lastName : ""}
-              </p> */}
+              </p>
             </>
           )}
           <label htmlFor="email">Email</label>
@@ -61,9 +70,9 @@ const Login = () => {
             value={newUser.email}
             onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
           />
-          {/* <p className="error" ref={errRef}>
+          <p className="error" ref={errRef}>
             {error?.email ? error.email : ""}
-          </p> */}
+          </p>
           <label htmlFor="passward">Password (6 or more characters)</label>
           <input
             type="password"
@@ -74,9 +83,9 @@ const Login = () => {
               setNewUser({ ...newUser, passward: e.target.value })
             }
           />
-          {/* <p className="error" ref={errRef}>
+          <p className="error" ref={errRef}>
             {error?.passward ? error.passward : ""}
-          </p> */}
+          </p>
           <button onClick={handleSubmit}>
             {isSignup ? "Agree & Join" : "Sign In"}
           </button>

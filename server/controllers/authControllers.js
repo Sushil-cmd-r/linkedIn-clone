@@ -5,6 +5,7 @@ const { createToken, verifyUser } = require("../helper/jwtAuth");
 const bcrypt = require("bcrypt");
 
 const checkAuth = (req, res) => {
+  console.log("inside auth");
   const cookie = req.cookies?.jwt;
   verifyUser(res, cookie);
 };
