@@ -13,8 +13,18 @@ import {
   ViewComfy,
 } from "@material-ui/icons";
 import { Avatar } from "@material-ui/core";
+import { logout } from "../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = ({ setMore, more }) => {
+  const dispatch = useDispatch();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
+  const user = useSelector((state) => state.users.user?.userName);
+
   return (
     <div className="header">
       <div className="headerLeft">
@@ -47,7 +57,9 @@ const Header = ({ setMore, more }) => {
             <h3 className="title">Notifications</h3>
           </li>
           <li className="headerIcon">
-            <Avatar className="avatar">S</Avatar>
+            <Avatar className="avatar" onClick={handleLogout}>
+              {user[0]}
+            </Avatar>
             <h3 className="title">Me</h3>
           </li>
           <div className="divider">

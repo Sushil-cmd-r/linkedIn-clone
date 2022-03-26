@@ -17,6 +17,8 @@ import { createComment } from "../../../features/commentSlice";
 
 const Feed = () => {
   const { comments, err } = useSelector((state) => state.comments);
+  const user = useSelector((state) => state.users.user?.userName);
+
   const [comment, setComment] = useState({ comment: "" });
 
   const dispatch = useDispatch();
@@ -32,7 +34,7 @@ const Feed = () => {
     <div className="feed">
       <div className="feedInput">
         <div className="feedSearch">
-          <Avatar fontSize="large">S</Avatar>
+          <Avatar fontSize="large">{user[0]}</Avatar>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -53,7 +55,7 @@ const Feed = () => {
       </div>
 
       <div className="comments">
-        {comments.length <= 0 ? (
+        {comments.length <= 0 && !err ? (
           <p style={{ marginTop: "15px" }}>Loading Comments</p>
         ) : err ? (
           <p style={{ marginTop: "15px" }}>{err}</p>
