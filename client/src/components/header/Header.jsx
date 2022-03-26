@@ -14,7 +14,7 @@ import {
 } from "@material-ui/icons";
 import { Avatar } from "@material-ui/core";
 import { logout } from "../../features/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = ({ setMore, more }) => {
   const dispatch = useDispatch();
@@ -22,6 +22,8 @@ const Header = ({ setMore, more }) => {
     e.preventDefault();
     dispatch(logout());
   };
+
+  const user = useSelector((state) => state.users.user?.userName);
 
   return (
     <div className="header">
@@ -56,7 +58,7 @@ const Header = ({ setMore, more }) => {
           </li>
           <li className="headerIcon">
             <Avatar className="avatar" onClick={handleLogout}>
-              S
+              {user[0]}
             </Avatar>
             <h3 className="title">Me</h3>
           </li>

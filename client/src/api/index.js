@@ -4,7 +4,8 @@ const url = "http://localhost:5000";
 
 // comments requests
 const fetchComments = () => axios.get(url);
-const createComment = (comment) => axios.post(url, comment);
+const createComment = (comment) =>
+  axios.post(url, comment, { withCredentials: true });
 
 // auth requests
 const auth = () => axios.get(`${url}/auth`, { withCredentials: true });

@@ -1,14 +1,17 @@
 import { Avatar } from "@material-ui/core";
 import "./sidebar.scss";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const imgUrl = "https://static-exp1.licdn.com/sc/h/55k1z8997gh8dwtihm11aajyq";
+  const user = useSelector((state) => state.users.user?.userName);
+
   return (
     <div className="sidebar">
       <div className="sidebarTop">
         <div className="profile">
           <img src={imgUrl} alt="#" />
-          <Avatar className="profileIcon">S</Avatar>
+          <Avatar className="profileIcon">{user[0]}</Avatar>
           <div className="profileInfo">
             <h4>Sushil Kandhare</h4>
             <p>Student At Vishwakarma Institute of Technology</p>

@@ -1,4 +1,5 @@
 const Comment = require("../models/Comment");
+const jwt = require("jsonwebtoken");
 
 const getComments = async (req, res) => {
   try {
@@ -11,7 +12,15 @@ const getComments = async (req, res) => {
 
 const createComment = async (req, res) => {
   const { comment } = req.body;
-  const creater = "Sushil Kandhare";
+  const cookie = req.cookies?.jwt;
+  if (!cookie) res.status(522).json({ message: "Connection timeout" });
+
+  // extract user from jwt
+  let creater = jwt.verify(
+    cookie,
+    process.env.JWT_SECRET,
+    (err, { email, userName }) => userName
+  );
 
   const newComment = await Comment.create({ comment, creater });
 

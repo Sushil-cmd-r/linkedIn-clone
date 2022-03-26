@@ -15,7 +15,6 @@ const App = () => {
   let user = useSelector((state) => state.users.user);
   let error = useSelector((state) => state.users.err);
   const dispatch = useDispatch();
-  console.log(error);
 
   useEffect(() => {
     const auth = () => {

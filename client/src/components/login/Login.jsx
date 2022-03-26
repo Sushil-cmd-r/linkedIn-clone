@@ -18,7 +18,6 @@ const Login = ({ error }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("button clicked");
     if (!isSignup) {
       dispatch(login(newUser));
       return;
