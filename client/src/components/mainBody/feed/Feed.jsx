@@ -16,7 +16,8 @@ import FlipMove from "react-flip-move";
 import { createComment } from "../../../features/commentSlice";
 
 const Feed = () => {
-  const { comments, err } = useSelector((state) => state.comments);
+  const comments = useSelector((state) => state.comments.filter);
+  const err = useSelector((state) => state.comments.err);
   const user = useSelector((state) => state.users.user?.userName);
 
   const [comment, setComment] = useState({ comment: "" });

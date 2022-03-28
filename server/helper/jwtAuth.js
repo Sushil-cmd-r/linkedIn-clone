@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const maxAge = 60;
+const maxAge = 60 * 30;
 
 const createToken = (email, userName) => {
   return jwt.sign({ email, userName }, process.env.JWT_SECRET, {
@@ -23,4 +23,4 @@ const verifyUser = (res, cookie) => {
   res.json(message);
 };
 
-module.exports = { verifyUser, createToken };
+module.exports = { verifyUser, createToken, maxAge };
