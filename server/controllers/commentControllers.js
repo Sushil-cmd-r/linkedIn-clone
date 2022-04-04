@@ -1,5 +1,6 @@
 const Comment = require("../models/Comment");
 const jwt = require("jsonwebtoken");
+const { convertToBase64 } = require("../helper/convertToBase64");
 
 const getComments = async (req, res) => {
   try {
@@ -11,18 +12,28 @@ const getComments = async (req, res) => {
 };
 
 const createComment = async (req, res) => {
-  const { comment } = req.body;
+  const comment = req.body?.comment;
   const cookie = req.cookies?.jwt;
-  if (!cookie) res.status(522).json({ message: "Connection timeout" });
 
+  if (!cookie || !comment) {
+    res.status(522).json({ message: "Connection timeout" });
+    return;
+  }
+  let img = "";
+  const image = req?.file;
+  if (image) {
+    const { buffer, mimetype } = image;
+    img = await convertToBase64(buffer, mimetype);
+  }
   // extract user from jwt
   let creater = jwt.verify(
     cookie,
     process.env.JWT_SECRET,
-    (err, { email, userName }) => userName
+    (err, { email, userName }) =>
+      err ? res.status(400).json({ message: "Something went wrong" }) : userName
   );
 
-  const newComment = await Comment.create({ comment, creater });
+  const newComment = await Comment.create({ comment, creater, img });
 
   res.json(newComment);
 };

@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+
+// routes
 const commentRoutes = require("./routes/comments");
 const authRoutes = require("./routes/auth");
-const morgan = require("morgan");
 require("dotenv").config();
 
 // Initialize app
