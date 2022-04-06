@@ -4,10 +4,106 @@
   background-color: white;
   z-index: 999;
   margin: auto;
-  border: 1px solid black;
+  border: 1px solid var(--borderColor);
   border-radius: 12px;
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .modalHeader {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--borderColor);
+
+    span {
+      font-size: 1.3rem;
+    }
+  }
+
+  .modalBody {
+    height: 200px;
+    max-height: 440px;
+    margin: 20px;
+    overflow-y: auto;
+
+    .info {
+      display: flex;
+      padding: 5px;
+      padding-left: 1.5px;
+
+      span {
+        margin-left: 10px;
+        font-size: 18px;
+      }
+      .icon {
+        transform: scale(1.3);
+        z-index: 9999 !important;
+      }
+    }
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+    textarea {
+      width: 100%;
+      height: 60%;
+      resize: none;
+      padding-top: 15px;
+      font-size: 17px;
+      border: none;
+      outline: none;
+      margin-top: 10px;
+    }
+  }
+
+  .modalFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+
+    .icons {
+      position: relative;
+      // .icon {
+      //   z-index: 9999 !important;
+      // }
+
+      .icon-text {
+        position: absolute;
+        width: max-content;
+        border: 1px solid var(--borderColor);
+        padding: 5px;
+        border-radius: 10px;
+        bottom: 35px;
+        left: 0;
+        display: none;
+        box-shadow: 2px 2px 2px var(--borderColor);
+      }
+
+      // .icon:hover {
+      //   .icon {
+      //     color: red;
+      //   }
+      // }
+    }
+
+    button {
+      padding: 7px 15px;
+      font-weight: bold;
+      color: white;
+      background-color: var(--blue2);
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 20px;
+
+      &:hover {
+        background-color: var(--blue1);
+      }
+    }
+  }
 }
