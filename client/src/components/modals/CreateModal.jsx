@@ -4,8 +4,7 @@ import { Close, ImageOutlined } from "@material-ui/icons";
 import { Avatar } from "@material-ui/core";
 import { useState } from "react";
 
-const CreateModal = ({ handleClose, setComment }) => {
-  const [imgMode, setImgMode] = useState(false);
+const CreateModal = ({ handleClose }) => {
   const [image, setImage] = useState("");
   const handleImage = (e) => {
     e.preventDefault();
