@@ -10,36 +10,23 @@ import {
 } from "@material-ui/icons";
 import Icon from "./Icon/Icon";
 import Comment from "./Comment/Comment";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FlipMove from "react-flip-move";
-import { createComment } from "../../../features/commentSlice";
 
 const Feed = ({ modal, close, open }) => {
   const comments = useSelector((state) => state.comments.filter);
   const err = useSelector((state) => state.comments.err);
   const user = useSelector((state) => state.users.user?.userName);
 
-  // const [comment, setComment] = useState({ comment: "" });
-  // const dispatch = useDispatch();
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   dispatch(createComment(comment));
-  //   setComment({ comment: "" });
-  // };
-
   return (
     <div className="feed">
       <div className="feedInput">
         <div className="feedSearch">
           <Avatar fontSize="large">{user[0]}</Avatar>
-          {/* <form onSubmit={handleSubmit}> */}
           <input
             onClick={() => (modal ? close() : open())}
             placeholder="Start a post"
           />
-          {/* </form> */}
         </div>
         <div className="feedIcons">
           <Icon Icon={ImageOutlined} title="Photo" color="blue" />

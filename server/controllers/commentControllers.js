@@ -12,10 +12,10 @@ const getComments = async (req, res) => {
 };
 
 const createComment = async (req, res) => {
-  const comment = req.body?.comment;
   const cookie = req.cookies?.jwt;
+  const comment = req.body?.comment;
 
-  if (!cookie || !comment) {
+  if (!cookie) {
     res.status(522).json({ message: "Connection timeout" });
     return;
   }
@@ -32,7 +32,6 @@ const createComment = async (req, res) => {
     (err, { email, userName }) =>
       err ? res.status(400).json({ message: "Something went wrong" }) : userName
   );
-
   const newComment = await Comment.create({ comment, creater, img });
 
   res.json(newComment);
