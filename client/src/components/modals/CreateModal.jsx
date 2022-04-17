@@ -3,7 +3,7 @@ import Backdrop from "../backdrop/Backdrop";
 import { Close, ImageOutlined } from "@material-ui/icons";
 import { Avatar } from "@material-ui/core";
 import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createComment } from "../../features/commentSlice";
 
 const CreateModal = ({ handleClose }) => {
@@ -12,6 +12,7 @@ const CreateModal = ({ handleClose }) => {
   const fileRef = useRef(null);
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.user?.userName);
 
   const handleImage = (e) => {
     e.preventDefault();
@@ -41,8 +42,8 @@ const CreateModal = ({ handleClose }) => {
           </div>
           <div className="modalBody">
             <div className="info">
-              <Avatar className="icon" />
-              <span>Sushil Kandhare</span>
+              <Avatar className="icon">{user[0]}</Avatar>
+              <span>{user}</span>
             </div>
             <textarea
               type="text"
