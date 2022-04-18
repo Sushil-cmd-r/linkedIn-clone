@@ -13,7 +13,7 @@ const Sidebar = () => {
           <img src={imgUrl} alt="#" />
           <Avatar className="profileIcon">{user[0]}</Avatar>
           <div className="profileInfo">
-            <h4>Sushil Kandhare</h4>
+            <h4>{user}</h4>
             <p>Student At Vishwakarma Institute of Technology</p>
           </div>
         </div>

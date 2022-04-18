@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+
+// routes
 const commentRoutes = require("./routes/comments");
 const authRoutes = require("./routes/auth");
-const morgan = require("morgan");
 require("dotenv").config();
 
 // Initialize app
@@ -25,7 +27,8 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 5000;
 
 // Connecting to DB
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI =
+  "mongodb+srv://sushil:sushil1710@cluster0.hoqvj.mongodb.net/linkdin-comments";
 
 mongoose
   .connect(MONGO_URI, {

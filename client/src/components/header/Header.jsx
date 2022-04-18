@@ -14,7 +14,11 @@ import {
 } from "@material-ui/icons";
 import { Avatar } from "@material-ui/core";
 import { logout } from "../../features/userSlice";
+
+// Redux
 import { useDispatch, useSelector } from "react-redux";
+import { filterComments } from "../../features/commentSlice";
+import { useEffect, useState } from "react";
 
 const Header = ({ setMore, more }) => {
   const dispatch = useDispatch();
@@ -24,6 +28,12 @@ const Header = ({ setMore, more }) => {
   };
 
   const user = useSelector((state) => state.users.user?.userName);
+  const comments = useSelector((state) => state.comments.comments);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    dispatch(filterComments(search));
+  }, [search, comments]);
 
   return (
     <div className="header">
@@ -31,7 +41,12 @@ const Header = ({ setMore, more }) => {
         <img src={linkedinLogo.link} alt="" />
         <div className="headerSearch">
           <Search style={{ color: "gray" }} />
-          <input type="text" placeholder="Search for people, jobs and more" />
+          <input
+            type="text"
+            placeholder="Search for people, jobs and more"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
       </div>
       <div className="headerRight">

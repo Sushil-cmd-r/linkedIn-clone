@@ -1,11 +1,10 @@
 const User = require("../models/User");
 const validator = require("validator");
 const { handleErr } = require("../helper/handleErr");
-const { createToken, verifyUser } = require("../helper/jwtAuth");
+const { createToken, verifyUser, maxAge } = require("../helper/jwtAuth");
 const bcrypt = require("bcrypt");
 
 const checkAuth = (req, res) => {
-  console.log("inside auth");
   const cookie = req.cookies?.jwt;
   verifyUser(res, cookie);
 };
@@ -21,7 +20,7 @@ const login = async (req, res) => {
     const userName = `${user.name} ${user.lastName}`;
 
     const token = createToken(email, userName);
-    res.cookie("jwt", token, { maxAge: 60000, httpOnly: true });
+    res.cookie("jwt", token, { maxAge: maxAge * 1000, httpOnly: true });
     res.status(201).json({ email, userName });
   } catch (err) {
     const error = handleErr(res, err);
@@ -32,7 +31,6 @@ const login = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  console.log("inside signup");
   const { email, passward, name, lastName } = req.body;
   try {
     // check if fields are correct

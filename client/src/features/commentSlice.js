@@ -3,6 +3,7 @@ import * as api from "../api";
 
 const initialState = {
   comments: [],
+  filter: [],
   err: null,
 };
 
@@ -29,7 +30,13 @@ const createComment = createAsyncThunk("CREATE", async (newComment) => {
 export const commentSlice = createSlice({
   name: "comment",
   initialState,
-  reducers: {},
+  reducers: {
+    filterComments: (state, action) => {
+      state.filter = state.comments.filter((c) =>
+        c.creater.toLowerCase().includes(action.payload.toLowerCase())
+      );
+    },
+  },
   extraReducers: {
     // get comments
     [getComments.fulfilled]: (state, { payload }) => {
@@ -54,4 +61,5 @@ export const commentSlice = createSlice({
 });
 
 export { getComments, createComment };
+export const { filterComments } = commentSlice.actions;
 export default commentSlice.reducer;

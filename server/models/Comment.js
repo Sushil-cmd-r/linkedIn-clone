@@ -10,6 +10,10 @@ const commentSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    img: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
