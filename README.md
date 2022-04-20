@@ -5,6 +5,11 @@ and **Reduxtoolkit** for state management. \
 In this user first needs to log in or signup (if they don't have account) \
 After logging in they can comment and there comment will be visible along with other comments from other users.
 
-# Front Page
+# LogIn Page
+![Screenshot (1)](https://user-images.githubusercontent.com/85934441/164165930-6753b4ba-244b-416a-b3e3-9bda283cd5e2.png)
 
-![Screenshot (90)](https://user-images.githubusercontent.com/85934441/160593176-f8ca240d-73a0-4aed-a354-83903acd4dc6.png)
+# Front Page
+![Screenshot (2)](https://user-images.githubusercontent.com/85934441/164166007-760ad070-3cd5-4ee7-b9e1-177b0098a31f.png)
+
+# Create Modal
+![Screenshot (3)](https://user-images.githubusercontent.com/85934441/164166040-d8e51fef-2a30-4627-91c0-1be2532907b8.png)
